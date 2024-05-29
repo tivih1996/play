@@ -31,23 +31,17 @@ function capSID(){
     return SID
     }
 // nhâp thông tin bệnh nhân
-function nhapBN(Name,NamSinh,Khoa ) {
+function nhapBN(Name,NamSinh,GioiTinh,Khoa ) {
     const ThongTinBN ={
         id: capSID(),
         Name,
         NamSinh,
+        GioiTinh,
         Khoa,
         ChiDinhXN:''
     } 
     localStorage.setItem(ThongTinBN.id,JSON.stringify(ThongTinBN))
     return ThongTinBN
 }
-// nhập chỉ định xét nghiệm
-function nhapChiDinh(id,ChiDinhXN){
-    const loadThongTinBN = JSON.parse(localStorage.getItem(id))
-    const ChiDinhXNMoi ={}
-    ChiDinhXN[ChiDinhXN] = ''
-    loadThongTinBN.ChiDinhXN = {...ChiDinhXNMoi}
 
-}
-
+// Sửa Thông tin Bn
