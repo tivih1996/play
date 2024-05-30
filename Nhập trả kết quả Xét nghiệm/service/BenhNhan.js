@@ -1,6 +1,6 @@
 // truy xuất thong tin bệnh nhân
 function xuatThongTinBN(id) {
-    ThongTinBN= JSON.parse(localStorage.getItem(id))
+     const ThongTinBN= JSON.parse(localStorage.getItem(id))
     return ThongTinBN
 }
 // cấp SID
@@ -45,3 +45,23 @@ function nhapBN(Name,NamSinh,GioiTinh,Khoa ) {
 }
 
 // Sửa Thông tin Bn
+const obNoiDungSua ={
+    Name:'',
+    NamSinh:'',
+    GioiTinh:'',
+    Khoa:''
+}
+function suaThongTinBN(id,themNoiDungSua){
+    const ThongTinBN= JSON.parse(localStorage.getItem(id))
+    const NoiDungSua = themNoiDungSua()
+    // lọc thuộc tính ''
+    for (let key in NoiDungSua) {
+        if (NoiDungSua[key] === ''){
+            delete NoiDungSua[key]
+        }      
+    }
+    
+    ThongTinBNnew = {...ThongTinBN,...NoiDungSua}
+    localStorage.setItem(ThongTinBNnew.id,JSON.stringify(ThongTinBNnew))
+    return ThongTinBNnew
+}

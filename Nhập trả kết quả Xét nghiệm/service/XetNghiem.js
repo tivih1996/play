@@ -1,12 +1,12 @@
 // nhập chỉ định xét nghiệm
 function nhapChiDinh(id,ChiDinhXN){
     const loadThongTinBN = JSON.parse(localStorage.getItem(id))
-
+    // kiểm tra có ID hay không
     if (loadThongTinBN === null || loadThongTinBN === undefined) {
         alert(" Id không tồn tại !!!");
         return;
     }
-    
+    // tạo chỉ định xét nghiệm
     const ChiDinhXNMoi ={}
     ChiDinhXNMoi[ChiDinhXN] = ''
     loadThongTinBN.ChiDinhXN = {...loadThongTinBN.ChiDinhXN,...ChiDinhXNMoi}
@@ -15,21 +15,23 @@ function nhapChiDinh(id,ChiDinhXN){
     return loadThongTinBN
 }
 // nhập kết quả xét nghiệm
-
 function nhapKetQua (id,tenXN,KetQua) {
     const loadThongTinBN = JSON.parse(localStorage.getItem(id))
-    // const LoadChiDinhXN = loadThongTinBN.ChiDinhXN
-    
+     // kiểm tra có ID hay không
+    if (loadThongTinBN === null || loadThongTinBN === undefined) {
+        alert(" Id không tồn tại !!!");
+        return;
+    }
+    //  kiểm tra có chỉ đinh hya không
     if (tenXN in loadThongTinBN.ChiDinhXN){
         loadThongTinBN.ChiDinhXN[tenXN] = KetQua
     }else{
         alert('Bệnh nhân không có chỉ định này !!!');
         return;
     } 
-    // loadThongTinBN.ChiDinhXN[tenXN] = KetQua
     //cap nhat tren local
     localStorage.setItem(loadThongTinBN.id,JSON.stringify(loadThongTinBN))
     return loadThongTinBN
 }
-// sửa chỉ định xét nghiệm
+
 // xoá chi định xét nghiệm
